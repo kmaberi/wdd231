@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="M.Kenneth Chamber of Commerce: Supporting local businesses, fostering economic growth, and building a stronger community.">
+  <meta name="keywords"
+    content="M.Kenneth business networking, M.Kenneth Chamber of Commerce, local business support M.Kenneth">
+  <meta name="author" content="Kenneth Maberi">
+  <title>M.Kenneth Chamber of Commerce | Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav class="site-nav">
+      <a href="index.html" class="logo">
+        <img src="images/chamber-of-commerce.jpg" alt="Chamber logo">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="current">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="join.html">Join the Chamber</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="directory.html">Business Directory</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Overview -->
+  <main>
+    <section class="hero">
+      <h1>Welcome to the M.Kenneth Chamber of Commerce</h1>
+      <p>
+        Supporting local businesses, fostering economic growth, and building a stronger community in M.Kenneth.
+      </p>
+      <a href="join.html" class="cta-button">Join Us Today</a>
+    </section>
+
+    <!-- Placeholder for dynamic course list -->
+    <section id="courses">
+      <h2>Certificate Courses</h2>
+      <div id="filter-controls">
+        <button data-subject="all">All</button>
+        <button data-subject="wdd">WDD</button>
+        <button data-subject="cse">CSE</button>
+      </div>
+      <ul id="course-list"></ul>
+      <p>Total Credits: <span id="credit-total">0</span></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      &copy; <span id="year"></span> M.Kenneth Chamber of Commerce | Uganda
+    </p>
+    <p id="lastModified"></p>
+    <p id="currentDateTime"></p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = `Last modified: ${document.lastModified}`;
+
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    const courses = [
+      { name: "WDD 130", subject: "wdd", credits: 3, completed: true },
+      { name: "WDD 230", subject: "wdd", credits: 3, completed: false },
+      { name: "CSE 121b", subject: "cse", credits: 3, completed: true },
+      { name: "CSE 111", subject: "cse", credits: 3, completed: false },
+    ];
+
+    const courseList = document.getElementById("course-list");
+    const creditTotal = document.getElementById("credit-total");
+
+    function displayCourses(filter = "all") {
+      courseList.innerHTML = "";
+      let totalCredits = 0;
+
+      courses
+        .filter(course => filter === "all" || course.subject === filter)
+        .forEach(course => {
+          const li = document.createElement("li");
+          li.textContent = `${course.name} (${course.credits} credits)`;
+          li.style.color = course.completed ? "green" : "red";
+          courseList.appendChild(li);
+          totalCredits += course.credits;
+        });
+
+      creditTotal.textContent = totalCredits;
+    }
+
+    document.getElementById("filter-controls").addEventListener("click", e => {
+      if (e.target.tagName === "BUTTON") {
+        displayCourses(e.target.dataset.subject);
+      }
+    });
+
+    displayCourses();
+  </script>
+</body>
+
+</html>

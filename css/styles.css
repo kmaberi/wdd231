@@ -1,0 +1,219 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #205072;
+  --secondary-color: #329D9C;
+  --background-color: #F5F5F5;
+  --text-color: #333333;
+  --font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header & Navigation */
+header {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* Adjust the logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: auto;
+  /* Push other navigation items to the right */
+}
+
+/* Adjust the logo image */
+.logo img {
+  max-height: 40px;
+  /* Control the height of the logo */
+  width: auto;
+  /* Maintain aspect ratio */
+  margin: 0;
+  /* Remove any extra margin */
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-links li+li {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a.current {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-image: url('../images/background.jpeg'); /* Path to your image */
+  background-size: cover; /* Ensures the image covers the entire section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: white; /* Ensures text is readable */
+  position: relative; /* Allows for overlay if needed */
+  transform: rotate(0deg); /* Rotates the background image sideways */
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Courses Section */
+#courses {
+  padding: 2rem 1rem;
+}
+
+#filter-controls {
+  margin-bottom: 1rem;
+}
+
+#filter-controls button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #004a99;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+#filter-controls button:hover {
+  background-color: #e6f0ff;
+}
+
+#course-list {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+#course-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+#course-list li.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Footer */
+footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  font-size: 0.875rem;
+}
+
+footer span {
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (min-width: 48rem) {
+  .nav-links {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  #courses {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
