@@ -5,11 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="M.Kenneth Chamber of Commerce: Supporting local businesses, fostering economic growth, and building a stronger community.">
-  <meta name="keywords"
-    content="M.Kenneth business networking, M.Kenneth Chamber of Commerce, local business support M.Kenneth">
+    content="Kenneth Maberi's WDD 231 Course Home Page. Explore projects, assignments, and resources for Web Frontend Development I.">
+  <meta name="keywords" content="WDD 231, Web Frontend Development, Kenneth Maberi, BYU-I">
   <meta name="author" content="Kenneth Maberi">
-  <title>M.Kenneth Chamber of Commerce | Home</title>
+  <title>Kenneth Maberi | WDD 231 Course Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -18,7 +20,7 @@
   <header>
     <nav class="site-nav">
       <a href="index.html" class="logo">
-        <img src="images/chamber-of-commerce.jpg" alt="Chamber logo">
+        <img src="images/chamber of commerce.jpg" alt="Chamber logo">
       </a>
       <button class="nav-toggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links">
@@ -33,84 +35,64 @@
     </nav>
   </header>
 
-  <!-- Hero Overview -->
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <h1>Welcome to the M.Kenneth Chamber of Commerce</h1>
+      <h1>Kenneth Maberi | WDD 231 Course Home</h1>
       <p>
         Supporting local businesses, fostering economic growth, and building a stronger community in M.Kenneth.
       </p>
       <a href="join.html" class="cta-button">Join Us Today</a>
     </section>
 
-    <!-- Placeholder for dynamic course list -->
-    <section id="courses">
-      <h2>Certificate Courses</h2>
-      <div id="filter-controls">
-        <button data-subject="all">All</button>
-        <button data-subject="wdd">WDD</button>
-        <button data-subject="cse">CSE</button>
-      </div>
-      <ul id="course-list"></ul>
-      <p>Total Credits: <span id="credit-total">0</span></p>
+    <!-- Assignments Section -->
+    <section id="assignments">
+      <h2>Assignments</h2>
+      <p>Explore weekly assignments and projects for WDD 231.</p>
+      <ul>
+        <li><a href="w1.html">Week 1: Course Home Page</a></li>
+        <li><a href="w2.html">Week 2: Chamber of Commerce Project</a></li>
+        <li><a href="w3.html">Week 3: Responsive Design</a></li>
+      </ul>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources">
+      <h2>Resources</h2>
+      <p>Find helpful resources for Web Frontend Development I.</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
+        <li><a href="https://www.w3schools.com/">W3Schools</a></li>
+        <li><a href="https://css-tricks.com/">CSS-Tricks</a></li>
+      </ul>
+    </section>
+
+    <!-- About This Course Section -->
+    <section id="about-course">
+      <h2>About This Course</h2>
+      <p>
+        WDD 231: Web Frontend Development I focuses on building responsive, accessible, and user-friendly websites using
+        HTML, CSS, and JavaScript. This course emphasizes best practices in web design and development.
+      </p>
+      <p>
+        Learn how to create dynamic and interactive web pages while adhering to modern web standards.
+      </p>
     </section>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>
-      &copy; <span id="year"></span> M.Kenneth Chamber of Commerce | Uganda
-    </p>
+    <p>&copy; <span id="year"></span> Kenneth Maberi | Uganda</p>
     <p id="lastModified"></p>
-    <p id="currentDateTime"></p>
+    <p>
+      Powered by <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Google</a>
+    </p>
   </footer>
 
   <script src="scripts/main.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById("lastModified").textContent = `Last modified: ${document.lastModified}`;
-
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    navToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-
-    const courses = [
-      { name: "WDD 130", subject: "wdd", credits: 3, completed: true },
-      { name: "WDD 230", subject: "wdd", credits: 3, completed: false },
-      { name: "CSE 121b", subject: "cse", credits: 3, completed: true },
-      { name: "CSE 111", subject: "cse", credits: 3, completed: false },
-    ];
-
-    const courseList = document.getElementById("course-list");
-    const creditTotal = document.getElementById("credit-total");
-
-    function displayCourses(filter = "all") {
-      courseList.innerHTML = "";
-      let totalCredits = 0;
-
-      courses
-        .filter(course => filter === "all" || course.subject === filter)
-        .forEach(course => {
-          const li = document.createElement("li");
-          li.textContent = `${course.name} (${course.credits} credits)`;
-          li.style.color = course.completed ? "green" : "red";
-          courseList.appendChild(li);
-          totalCredits += course.credits;
-        });
-
-      creditTotal.textContent = totalCredits;
-    }
-
-    document.getElementById("filter-controls").addEventListener("click", e => {
-      if (e.target.tagName === "BUTTON") {
-        displayCourses(e.target.dataset.subject);
-      }
-    });
-
-    displayCourses();
   </script>
 </body>
 
