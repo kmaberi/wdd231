@@ -1,0 +1,257 @@
+/* Color Scheme */
+:root {
+    --primary: #2a5298;
+    --secondary: #1e3c72;
+    --accent: #f9d423;
+    --background: #f4f7fa;
+    --text: #222;
+    --white: #fff;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    margin: 0;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: var(--white);
+    padding: 1rem 0;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+}
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+}
+
+#nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-list li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+#nav-list li a.active,
+#nav-list li a:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+/* Responsive Navigation */
+@media (max-width: 700px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    #nav-list {
+        flex-direction: column;
+        background: var(--secondary);
+        position: absolute;
+        top: 3.5rem;
+        right: 0;
+        left: 0;
+        display: none;
+    }
+
+    #nav-list.open {
+        display: flex;
+    }
+}
+
+/* Directory Controls */
+.directory-controls {
+    max-width: 1200px;
+    margin: 2rem auto 1rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.view-toggle button {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.view-toggle button.active,
+.view-toggle button:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+/* Directory Grid & List */
+.directory {
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Grid layout */
+.directory.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* List layout */
+.directory.list {
+    display: block;
+}
+
+.directory.list .member-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.member-card {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(42, 82, 152, 0.07);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: box-shadow 0.2s;
+}
+
+.member-card img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.member-card h3 {
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.member-card .level {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.member-card a {
+    color: var(--primary);
+    text-decoration: underline;
+    font-size: 0.95rem;
+    word-break: break-all;
+}
+
+.member-card .address,
+.member-card .phone {
+    font-size: 0.95rem;
+    color: #444;
+    margin: 0.2rem 0;
+}
+
+/* Footer */
+footer {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 1.5rem 1rem 1rem 1rem;
+    text-align: center;
+}
+
+footer .contact-info {
+    margin-bottom: 0.5rem;
+}
+
+footer .dev-info {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .logo-title {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .directory-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .directory {
+        grid-template-columns: 1fr;
+    }
+
+    .member-card,
+    .directory.list .member-card {
+        padding: 1rem;
+    }
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+    overflow-x: hidden;
+}
