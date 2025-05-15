@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const courses = [
-        { id: 1, name: "Web Frontend Development I", subject: "Web Development", credits: 3, completed: false },
-        { id: 2, name: "Database Design", subject: "Database", credits: 3, completed: false },
-        { id: 3, name: "JavaScript Programming", subject: "Programming", credits: 4, completed: false },
-        { id: 4, name: "Responsive Design", subject: "Web Development", credits: 2, completed: false },
-        { id: 5, name: "Data Structures", subject: "Programming", credits: 3, completed: false },
-        { id: 6, name: "Cloud Computing", subject: "Cloud", credits: 3, completed: false }
+        { id: 1, name: "Web Frontend Development I", subject: "Web Development", credits: 3, image: "web-frontend.jpg", completed: false },
+        { id: 2, name: "Database Design", subject: "Database", credits: 3, image: "database-design.jpg", completed: false },
+        { id: 3, name: "JavaScript Programming", subject: "Programming", credits: 4, image: "javascript-programming.jpg", completed: false },
+        { id: 4, name: "Responsive Design", subject: "Web Development", credits: 2, image: "responsive-design.jpg", completed: false },
+        { id: 5, name: "Data Structures", subject: "Programming", credits: 3, image: "data-structures.jpg", completed: false },
+        { id: 6, name: "Cloud Computing", subject: "Cloud", credits: 3, image: "cloud-computing.jpg", completed: false }
     ];
 
     const courseList = document.getElementById('course-list');
@@ -15,9 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display courses dynamically
     function displayCourses(filteredCourses) {
         courseList.innerHTML = filteredCourses.map(course => `
-            <li>
-                ${course.name} (${course.subject}) - ${course.credits} credits
-            </li>
+            <div class="course-card">
+                <img src="images/${course.image}" alt="${course.name}" class="course-image">
+                <h3>${course.name}</h3>
+                <p>${course.subject} - ${course.credits} credits</p>
+            </div>
         `).join('');
     }
 
