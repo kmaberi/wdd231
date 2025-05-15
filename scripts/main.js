@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const courses = [
         { id: 1, name: "Web Frontend Development I", subject: "Web Development", credits: 3, image: "web-frontend.jpg", completed: false },
         { id: 2, name: "Database Design", subject: "Database", credits: 3, image: "database-design.jpg", completed: false },
-        { id: 3, name: "JavaScript Programming", subject: "Programming", credits: 4, image: "javascript-programming.jpg", completed: false },
+        { id: 3, name: "JavaScript Programming", subject: "Programming", credits: 4, image: "javascript-programming.png", completed: false },
         { id: 4, name: "Responsive Design", subject: "Web Development", credits: 2, image: "responsive-design.jpg", completed: false },
         { id: 5, name: "Data Structures", subject: "Programming", credits: 3, image: "data-structures.jpg", completed: false },
         { id: 6, name: "Cloud Computing", subject: "Cloud", credits: 3, image: "cloud-computing.jpg", completed: false }
