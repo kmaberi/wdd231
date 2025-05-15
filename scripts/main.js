@@ -1,65 +1,43 @@
-const courses = [
-  { name: "WDD 130", subject: "wdd", credits: 3, completed: true },
-  { name: "WDD 230", subject: "wdd", credits: 3, completed: false },
-  { name: "CSE 121b", subject: "cse", credits: 3, completed: true },
-  { name: "CSE 111", subject: "cse", credits: 3, completed: false },
-];
+document.addEventListener('DOMContentLoaded', () => {
+  const courses = [
+    { id: 1, name: "Web Frontend Development I", subject: "Web Development", credits: 3, completed: true },
+    { id: 2, name: "Database Design", subject: "Database", credits: 3, completed: false },
+    { id: 3, name: "JavaScript Programming", subject: "Programming", credits: 4, completed: true },
+    { id: 4, name: "Responsive Design", subject: "Web Development", credits: 2, completed: false },
+    { id: 5, name: "Data Structures", subject: "Programming", credits: 3, completed: false },
+    { id: 6, name: "Cloud Computing", subject: "Cloud", credits: 3, completed: true }
+  ];
 
-const listEl = document.getElementById("course-list");
-const totalEl = document.getElementById("credit-total");
-const yearEl  = document.getElementById("year");
-const modEl   = document.getElementById("last-modified");
-const creditTotal = document.getElementById("credit-total");
+  const courseList = document.getElementById('course-list');
+  const filterButtons = document.querySelectorAll('.filter-button');
+  const totalCreditsElement = document.getElementById('total-credits');
 
-courses.forEach(course => {
-  const li = document.createElement("li");
-  li.textContent = `${course.name} (${course.credits} credits)`;
-  li.classList.add(course.completed ? "completed" : "incomplete");
-  listEl.appendChild(li);
-});
-
-// 1. Render courses
-function renderCourses(filter = "all") {
-  listEl.innerHTML = "";
-  const filtered = courses.filter(c =>
-    filter === "all" ? true : c.subject === filter
-  );
-  filtered.forEach(c => {
-    const li = document.createElement("li");
-    li.textContent = `${c.name} (${c.credits} credits)`;
-    if (c.completed) li.classList.add("completed");
-    listEl.appendChild(li);
-  });
-  // 2. Update credits total via reduce
-  const total = filtered.reduce((sum, c) => sum + c.credits, 0);
-  totalEl.textContent = total;
-}
-
-function updateCredits(filter = "all") {
-  const filteredCourses = courses.filter(course => filter === "all" || course.subject === filter);
-  const totalCredits = filteredCourses.reduce((sum, course) => sum + course.credits, 0);
-  creditTotal.textContent = totalCredits;
-}
-
-// 3. Filter buttons
-document.getElementById("filter-controls").addEventListener("click", e => {
-  if (e.target.tagName === "BUTTON") {
-    const filter = e.target.dataset.subject;
-    const filteredCourses = courses.filter(course => filter === "all" || course.subject === filter);
-    listEl.innerHTML = "";
-    filteredCourses.forEach(course => {
-      const li = document.createElement("li");
-      li.textContent = `${course.name} (${course.credits} credits)`;
-      li.classList.add(course.completed ? "completed" : "incomplete");
-      listEl.appendChild(li);
-    });
+  // Display courses dynamically
+  function displayCourses(filteredCourses) {
+    courseList.innerHTML = filteredCourses.map(course => `
+            <li class="${course.completed ? 'completed' : ''}">
+                ${course.name} (${course.subject}) - ${course.credits} credits
+            </li>
+        `).join('');
   }
+
+  // Calculate total credits
+  function calculateTotalCredits(filteredCourses) {
+    const totalCredits = filteredCourses.reduce((sum, course) => sum + course.credits, 0);
+    totalCreditsElement.textContent = `Total Credits: ${totalCredits}`;
+  }
+
+  // Filter courses by subject
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const subject = button.dataset.subject;
+      const filteredCourses = subject === 'All' ? courses : courses.filter(course => course.subject === subject);
+      displayCourses(filteredCourses);
+      calculateTotalCredits(filteredCourses);
+    });
+  });
+
+  // Initial display
+  displayCourses(courses);
+  calculateTotalCredits(courses);
 });
-
-// 4. Footer dates
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("lastModified").textContent = `Last modified: ${document.lastModified}`;
-
-// Initial render
-renderCourses();
-updateCredits();
