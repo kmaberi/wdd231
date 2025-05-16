@@ -58,4 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial fetch and display
     fetchAndDisplayMembers();
+
+    document.getElementById('members').innerHTML = '<p>Test Member</p>';
 });
