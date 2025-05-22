@@ -18,56 +18,5 @@
     "level": 2,
     "description": "Eco-friendly landscaping and maintenance.",
     "founded": 2008
-  },
-  {
-    "name": "TechNest Solutions",
-    "address": "303 Innovation Dr, Sunrise Valley",
-    "phone": "(555) 345-6789",
-    "website": "https://technest.com",
-    "image": "technest.png",
-    "level": 1,
-    "description": "IT consulting and cloud services.",
-    "founded": 2015
-  },
-  {
-    "name": "Valley Fitness Center",
-    "address": "404 Wellness Blvd, Sunrise Valley",
-    "phone": "(555) 456-7890",
-    "website": "https://valleyfitness.com",
-    "image": "valley-fitness.jpg",
-    "level": 2,
-    "description": "Modern gym with classes and personal training.",
-    "founded": 2010
-  },
-  {
-    "name": "Sunrise Bookstore",
-    "address": "505 Reading Rd, Sunrise Valley",
-    "phone": "(555) 567-8901",
-    "website": "https://sunrisebooks.com",
-    "image": "sunrise-books.png",
-    "level": 1,
-    "description": "Independent bookstore and community events.",
-    "founded": 2005
-  },
-  {
-    "name": "Bright Smiles Dental",
-    "address": "606 Smile St, Sunrise Valley",
-    "phone": "(555) 678-9012",
-    "website": "https://brightsmiles.com",
-    "image": "bright-smiles.png",
-    "level": 3,
-    "description": "Family dental care and orthodontics.",
-    "founded": 2011
-  },
-  {
-    "name": "Sunrise Valley Florist",
-    "address": "707 Blossom Ave, Sunrise Valley",
-    "phone": "(555) 789-0123",
-    "website": "https://sunriseflorist.com",
-    "image": "sunrise-florist.png",
-    "level": 2,
-    "description": "Fresh flowers and event arrangements.",
-        "founded": 2003
-      }
-    ]
-  
+  }
+]
