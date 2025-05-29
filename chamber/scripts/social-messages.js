@@ -36,3 +36,6 @@ function rotateMessages() {
 // Initialize
 displayMessages();
 rotateMessages();
+
+console.log("Social messages script loaded.");
+console.log(updatesContainer);

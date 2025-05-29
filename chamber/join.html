@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Sunrise Valley Chamber</title>
+    <meta name="description"
+        content="Become a member of the Sunrise Valley Chamber of Commerce and connect with local businesses and opportunities.">
+    <meta name="author" content="Kenneth Maberi">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.ico">
+
+    <!-- Facebook Open Graph Meta -->
+    <meta property="og:title" content="Join the Sunrise Valley Chamber">
+    <meta property="og:description"
+        content="Become a member of the Sunrise Valley Chamber of Commerce and connect with local businesses and opportunities.">
+    <meta property="og:image" content="images/chamber-social.jpg">
+    <meta property="og:url" content="https://kmaberi.github.io/wdd231/chamber/join.html">
+    <meta property="og:type" content="website">
+
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles/chamber.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="images/chamber-logo.jpg" alt="Sunrise Valley Chamber Logo" class="logo">
+            <p>Sunrise Valley Chamber of Commerce</p>
+        </div>
+        <nav>
+            <button id="menu-toggle" aria-label="Open navigation menu">&#9776;</button>
+            <ul id="nav-list">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Join the Sunrise Valley Chamber</h1>
+        <section class="join-info">
+            <h2>Why Join?</h2>
+            <p>Becoming a member of the Sunrise Valley Chamber of Commerce connects you with local businesses,
+                resources, and opportunities for growth. Enjoy exclusive benefits, networking events, and support for
+                your business.</p>
+        </section>
+        <section class="join-form-section">
+            <h2>Membership Application</h2>
+            <form class="join-form" method="get" action="thankyou.html">
+                <label>
+                    First Name:
+                    <input type="text" name="firstName" required autocomplete="given-name" title="First Name">
+                </label>
+
+                <label for="lastName" title="Enter your last name">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required title="Last Name" autocomplete="family-name">
+
+                <label for="orgTitle" title="Your title within your organization">Organizational Title:</label>
+                <input type="text" id="orgTitle" name="orgTitle" title="Organizational Title"
+                    autocomplete="organization-title" pattern="^[A-Za-z\s\-]{7,}$" placeholder="e.g. Marketing Manager"
+                    required>
+
+                <label for="email" title="Enter your email address">Email:</label>
+                <input type="email" id="email" name="email" required title="Email Address" autocomplete="email"
+                    placeholder="you@example.com">
+
+                <label for="phone" title="Enter your mobile phone number">Mobile Phone:</label>
+                <input type="tel" id="phone" name="phone" required title="Mobile Phone" autocomplete="tel">
+
+                <label for="business" title="Enter your business or organization name">Business/Organization
+                    Name:</label>
+                <input type="text" id="business" name="business" required title="Business or Organization Name"
+                    autocomplete="organization">
+
+                <label for="membership" title="Select your membership level">Membership Level:</label>
+                <select id="membership" name="membership" required title="Membership Level">
+                    <option value="">Select a level</option>
+                    <option value="np">NP Membership (Non Profit, No Fee)</option>
+                    <option value="bronze">Bronze Membership</option>
+                    <option value="silver">Silver Membership</option>
+                    <option value="gold">Gold Membership</option>
+                </select>
+
+                <label for="description" title="Describe your business or organization">Business/Organization
+                    Description:</label>
+                <textarea id="description" name="description" title="Business or Organization Description"
+                    rows="4"></textarea>
+
+                <input type="hidden" id="timestamp" name="timestamp">
+
+                <input type="submit" value="Submit Application" class="cta-button">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>Contact: info@sunrisevalleychamber.com | (555) 123-4567 | 123 Main St, Sunrise Valley</p>
+        </div>
+        <div class="dev-info">
+            <p>&copy; <span id="year"></span> Sunrise Valley Chamber | Kenneth Maberi | WDD 231</p>
+            <p>Last Modified: <span id="lastModified"></span></p>
+        </div>
+    </footer>
+    <script>
+        // Display current year and last modified date
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('lastModified').textContent = document.lastModified;
+
+        // Set the timestamp field to the current date and time when the form loads
+        document.getElementById('timestamp').value = new Date().toISOString();
+    </script>
+</body>
+
+</html>
