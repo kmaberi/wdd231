@@ -1,0 +1,94 @@
+:root {
+    --black: #000000;
+    --yellow: #FFD700;
+    --red: #D00000;
+    --background: #fff;
+    --text: #222;
+}
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    margin: 0;
+    padding: 0 1rem 2rem 1rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+header {
+    background: var(--black);
+    color: var(--yellow);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 2rem;
+}
+h1, h2 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: var(--black);
+}
+h1 {
+    color: var(--red);
+    margin-bottom: 0.5rem;
+}
+section {
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 1rem 1.5rem;
+}
+.color-sample {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+}
+.black { background: var(--black);}
+.yellow { background: var(--yellow);}
+.red { background: var(--red);}
+.background { background: var(--background);}
+.font-montserrat { font-family: 'Montserrat', Arial, sans-serif; font-size: 1.2em; }
+.font-opensans { font-family: 'Open Sans', Arial, sans-serif; }
+.wireframes {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.wireframe {
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    width: 180px;
+    height: 300px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+.wireframe-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+.wireframe img {
+    width: 140px;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+.wireframe-note {
+    font-size: 0.95em;
+    color: #666;
+}
+@media (max-width: 600px) {
+    .wireframes { flex-direction: column; align-items: center; }
+    .wireframe { width: 95vw; max-width: 320px; }
+}

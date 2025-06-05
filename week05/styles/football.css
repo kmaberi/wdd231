@@ -1,0 +1,135 @@
+:root {
+    --color-primary: #007A3D;
+    --color-accent: #FFA500;
+    --color-neutral: #F5F5DC;
+    --color-dark: #333333;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --font-nav: 'Roboto', sans-serif;
+}
+
+body {
+    background: #ffe;
+    color: var(--color-dark);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: var(--color-dark);
+    color: var(--color-neutral);
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: var(--font-nav);
+    font-weight: 500;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+}
+
+h2 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+}
+
+footer {
+    background: var(--color-dark);
+    color: var(--color-neutral);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Historic Updates Section */
+#historic-updates {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.historic-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.historic-img {
+    max-width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.historic-text h3 {
+    margin: 0.5rem 0 0.2rem 0;
+    color: var(--color-primary);
+}
+
+.historic-text p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.site-logo {
+    height: 60px;
+    width: auto;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        flex-direction: column;
+    }
+
+    .site-logo {
+        height: 40px;
+    }
+}
+
+@media (min-width: 600px) {
+    .historic-card {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .historic-img {
+        margin-right: 2rem;
+    }
+}
