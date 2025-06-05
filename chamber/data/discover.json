@@ -1,49 +1,49 @@
 [
   {
     "name": "Sunrise Valley Park",
-    "image": "sunrise-valley.jpg",
+    "image": "sunrise-valley.webp",
     "address": "100 Park Lane, Sunrise Valley",
     "description": "A beautiful park with walking trails, playgrounds, and picnic areas."
   },
   {
     "name": "Sunrise Museum",
-    "image": "sunrise-museum.jpg",
+    "image": "sunrise-museum.webp",
     "address": "200 History Ave, Sunrise Valley",
     "description": "Explore local history and art exhibits at the Sunrise Museum."
   },
   {
     "name": "Riverwalk",
-    "image": "river-walk.jpg",
+    "image": "river-walk.webp",
     "address": "300 Riverside Dr, Sunrise Valley",
     "description": "A scenic riverside path perfect for jogging and cycling."
   },
   {
     "name": "Botanical Gardens",
-    "image": "botanical-gardens.jpg",
+    "image": "botanical-gardens.webp",
     "address": "400 Greenhouse Rd, Sunrise Valley",
     "description": "Discover exotic plants and themed gardens."
   },
   {
     "name": "Sunrise Library",
-    "image": "sunrise-library.jpg",
+    "image": "sunrise-library.webp",
     "address": "500 Book St, Sunrise Valley",
     "description": "A modern library with community programs and study spaces."
   },
   {
     "name": "Artisan Market",
-    "image": "artisan.jpg",
+    "image": "artisan.webp",
     "address": "600 Market Sq, Sunrise Valley",
     "description": "Shop for local crafts, foods, and handmade goods."
   },
   {
     "name": "Sunrise Sports Complex",
-    "image": "sports-complex.jpg",
+    "image": "sports-complex.webp",
     "address": "700 Stadium Rd, Sunrise Valley",
     "description": "Facilities for soccer, tennis, and more."
   },
   {
     "name": "Sunrise Theater",
-    "image": "theater.jpg",
+    "image": "theater.webp",
     "address": "800 Stage Ave, Sunrise Valley",
     "description": "Live performances, movies, and community events."
   }

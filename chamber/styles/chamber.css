@@ -373,8 +373,14 @@ footer .dev-info {
     padding: 1rem;
 }
 
-.discover-card h2 { margin-top: 0; }
-.discover-card figure { margin: 0 0 1rem 0; }
+.discover-card h2 {
+    margin-top: 0;
+}
+
+.discover-card figure {
+    margin: 0 0 1rem 0;
+}
+
 .discover-card img {
     width: 100%;
     max-width: 300px;
@@ -383,6 +389,7 @@ footer .dev-info {
     border-radius: 6px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .discover-card button {
     background: #2a5298;
     color: #fff;
@@ -391,6 +398,7 @@ footer .dev-info {
     border-radius: 4px;
     cursor: pointer;
 }
+
 .visit-message {
     background: #f9d423;
     color: #222;
@@ -412,6 +420,7 @@ footer .dev-info {
             "card7 card8";
     }
 }
+
 /* Large screens */
 @media (min-width: 1025px) {
     .discover-grid {
@@ -421,15 +430,39 @@ footer .dev-info {
             "card5 card6 card7 card8";
     }
 }
+
 /* Assign grid areas to cards */
-.discover-card:nth-child(1) { grid-area: card1; }
-.discover-card:nth-child(2) { grid-area: card2; }
-.discover-card:nth-child(3) { grid-area: card3; }
-.discover-card:nth-child(4) { grid-area: card4; }
-.discover-card:nth-child(5) { grid-area: card5; }
-.discover-card:nth-child(6) { grid-area: card6; }
-.discover-card:nth-child(7) { grid-area: card7; }
-.discover-card:nth-child(8) { grid-area: card8; }
+.discover-card:nth-child(1) {
+    grid-area: card1;
+}
+
+.discover-card:nth-child(2) {
+    grid-area: card2;
+}
+
+.discover-card:nth-child(3) {
+    grid-area: card3;
+}
+
+.discover-card:nth-child(4) {
+    grid-area: card4;
+}
+
+.discover-card:nth-child(5) {
+    grid-area: card5;
+}
+
+.discover-card:nth-child(6) {
+    grid-area: card6;
+}
+
+.discover-card:nth-child(7) {
+    grid-area: card7;
+}
+
+.discover-card:nth-child(8) {
+    grid-area: card8;
+}
 
 /* Image hover effect for non-mobile */
 @media (min-width: 641px) {
@@ -485,13 +518,12 @@ body {
 
 /* Visually hidden but accessible */
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
 }
-
