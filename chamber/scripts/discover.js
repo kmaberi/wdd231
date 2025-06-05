@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(items => {
             const grid = document.getElementById('discover-cards');
-            grid.innerHTML = items.map(item => `
+            grid.innerHTML += items.map(item => `
                 <article class="discover-card">
                     <h2>${item.name}</h2>
                     <figure>
-                        <img src="images/${item.image}" alt="${item.name}">
+                        <img src="images/${item.image}" alt="${item.name}" loading="lazy">
                     </figure>
                     <address>${item.address}</address>
                     <p>${item.description}</p>
