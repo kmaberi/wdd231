@@ -365,11 +365,32 @@ footer .dev-info {
         "card7"
         "card8";
 }
-.discover-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 1rem; }
+
+.discover-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0001;
+    padding: 1rem;
+}
+
 .discover-card h2 { margin-top: 0; }
 .discover-card figure { margin: 0 0 1rem 0; }
-.discover-card img { width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 6px; transition: transform 0.3s, box-shadow 0.3s; }
-.discover-card button { background: #2a5298; color: #fff; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; }
+.discover-card img {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.discover-card button {
+    background: #2a5298;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+}
 .visit-message {
     background: #f9d423;
     color: #222;
