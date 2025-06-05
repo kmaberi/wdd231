@@ -351,6 +351,74 @@ footer .dev-info {
     }
 }
 
+/* Card grid and areas */
+.discover-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-areas:
+        "card1"
+        "card2"
+        "card3"
+        "card4"
+        "card5"
+        "card6"
+        "card7"
+        "card8";
+}
+.discover-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 1rem; }
+.discover-card h2 { margin-top: 0; }
+.discover-card figure { margin: 0 0 1rem 0; }
+.discover-card img { width: 100%; max-width: 300px; height: 200px; object-fit: cover; border-radius: 6px; transition: transform 0.3s, box-shadow 0.3s; }
+.discover-card button { background: #2a5298; color: #fff; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; }
+.visit-message {
+    background: #f9d423;
+    color: #222;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Medium screens */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .discover-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "card1 card2"
+            "card3 card4"
+            "card5 card6"
+            "card7 card8";
+    }
+}
+/* Large screens */
+@media (min-width: 1025px) {
+    .discover-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "card1 card2 card3 card4"
+            "card5 card6 card7 card8";
+    }
+}
+/* Assign grid areas to cards */
+.discover-card:nth-child(1) { grid-area: card1; }
+.discover-card:nth-child(2) { grid-area: card2; }
+.discover-card:nth-child(3) { grid-area: card3; }
+.discover-card:nth-child(4) { grid-area: card4; }
+.discover-card:nth-child(5) { grid-area: card5; }
+.discover-card:nth-child(6) { grid-area: card6; }
+.discover-card:nth-child(7) { grid-area: card7; }
+.discover-card:nth-child(8) { grid-area: card8; }
+
+/* Image hover effect for non-mobile */
+@media (min-width: 641px) {
+    .discover-card img:hover {
+        transform: scale(1.07) rotate(-2deg);
+        box-shadow: 0 8px 24px #0003;
+        filter: brightness(1.1) contrast(1.1);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
