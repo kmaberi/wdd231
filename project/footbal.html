@@ -9,7 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&family=Roboto:wght@500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="football.css">
+    <link rel="stylesheet" href="styles/football.css">
     <link rel="scriptsheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="description"
         content="Explore Ugandan football with the latest news, match day weather, team history, and suggestions to improve the game.">
@@ -22,23 +22,29 @@
             <h1>Ugandan Football</h1>
         </div>
         <nav>
-            <ul>
+            <ul id="nav-list">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Teams</a></li>
                 <li><a href="#">Fixtures</a></li>
                 <li><a href="#">Membership</a></li>
             </ul>
+            <button id="menu-toggle" aria-label="Toggle navigation">☰</button>
         </nav>
     </header>
     <main>
+        <!-- Local Storage Visit Message -->
+        <aside id="visit-message" class="visit-message"></aside>
+
         <section id="news">
             <h2>Latest News</h2>
             <div id="news-content"></div>
         </section>
+
         <section id="weather">
             <h2>Match Day Weather</h2>
             <div id="weather-content"></div>
         </section>
+
         <section id="history">
             <h2>Ugandan Football History</h2>
             <div class="team-logos">
@@ -50,48 +56,63 @@
             <p>
                 Ugandan football dates back to the early 20th century, with the Federation of Uganda Football
                 Associations
-                (FUFA) founded in 1924. The national team, the "Cranes," is one of East Africa's most successful,
-                winning
-                the CECAFA Cup a record 15 times and making a historic return to the Africa Cup of Nations in 2017. The
-                Uganda Premier League (UPL) features top clubs like SC Villa, KCCA FC, and Express FC.
+                (FUFA) founded in 1924. The national team, the "Cranes," is one of East Africa's most successful.
             </p>
         </section>
+
         <section id="this-day">
             <h2>This Day in Ugandan Football History</h2>
             <div id="daily-history">
                 <!-- This will be filled by JS with a fact/event from years ago -->
             </div>
         </section>
+
         <section id="current-event">
             <h2>Current Event</h2>
             <p>
-                <strong>Uganda Premier League 2024/25 Season Concludes:</strong> KCCA FC clinched the league title in
-                May
-                2025 after a dramatic final day win over Vipers SC. Rising star Brian Ssenyondo finished as top scorer,
-                and FUFA announced a new grassroots development program to nurture future talent across Uganda.
+                <strong>Uganda Premier League 2024/25 Season Concludes:</strong> KCCA FC clinched the league title after
+                a dramatic win, with rising star Brian Ssenyondo finishing as top scorer.
             </p>
         </section>
+
         <section id="suggestions">
             <h2>Suggestions Corner</h2>
             <p>What can we do for our football? Share your ideas to help improve Ugandan football!</p>
-            <form id="suggestion-form">
+            <form id="suggestion-form" action="form-action.html" method="get">
                 <label for="suggestion">Your Suggestion:</label>
                 <textarea id="suggestion" name="suggestion" rows="3" required></textarea>
                 <button type="submit">Submit</button>
             </form>
             <div id="suggestion-list"></div>
         </section>
+
         <section id="historic-updates">
             <h2>Historic Updates</h2>
             <div id="historic-message">
-                <!-- JS will inject message and image here -->
+                <!-- JS will inject historic messages and images here -->
             </div>
         </section>
+
+        <section id="timeline">
+            <h2>Football History Timeline</h2>
+            <!-- Timeline content will be injected by JS from football.json -->
+        </section>
     </main>
+
+    <!-- Modal Dialog Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="modal-close" class="modal-close">&times;</span>
+            <h2>More Information</h2>
+            <p id="modal-message">Detailed information will appear here.</p>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2025 Ugandan Football</p>
     </footer>
-    <script src="football.js"></script>
+
+    <script src="scripts/football.js"></script>
 </body>
 
 </html>
