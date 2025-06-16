@@ -1,0 +1,135 @@
+:root {
+    --primary-color: #006400;
+    /* Deep green */
+    --accent-color: #ffd700;
+    /* Gold */
+    --background-color: #f4f4f4;
+    --heading-font: 'Montserrat', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+}
+
+body {
+    background: var(--background-color);
+    color: #222;
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0 1rem;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+}
+
+h1 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    margin-bottom: 0.2em;
+}
+
+.logo {
+    width: 60px;
+    vertical-align: middle;
+}
+
+h2 {
+    color: var(--accent-color);
+    font-family: var(--heading-font);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.2em;
+}
+
+section {
+    margin: 2rem 0;
+}
+
+.colors {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.color-sample {
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    font-family: var(--heading-font);
+}
+
+.primary {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.accent {
+    background: var(--accent-color);
+    color: #222;
+}
+
+.wireframes {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.wireframe {
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    width: 220px;
+    height: 340px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.wireframe-label {
+    margin-top: 0.5rem;
+    font-size: 1em;
+    color: #555;
+}
+
+.wireframe img {
+    width: 180px;
+    height: 260px;
+    object-fit: contain;
+}
+
+@media (max-width: 600px) {
+    .wireframes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wireframe {
+        width: 90vw;
+    }
+}
+
+.sample-heading {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+}
+
+.sample-body {
+    font-family: 'Roboto', sans-serif;
+}
+
+footer {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+    color: #888;
+}
+
+.wireframe-note {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 1em;
+}

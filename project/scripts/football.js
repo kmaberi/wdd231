@@ -1,234 +1,132 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    // Example: Populate news section (static demo)
-    const newsContent = document.getElementById('news-content');
-    newsContent.innerHTML = `
-        <ul>
-            <li>UPL kicks off this weekend with exciting fixtures!</li>
-            <li>Grassroots football tournament announced for July.</li>
-            <li>Player spotlight: Meet Uganda’s rising star, John Okello.</li>
-        </ul>
-    `;
+import ugandaFootballHistory from './ugandaFootballHistory.js';
 
-    // Fetch football timeline data (local JSON) using async/await inside a try/catch
-    try {
-        // Fetch the JSON data (ensure the path is correct relative to your HTML file)
-        const response = await fetch('data/football.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const timelineData = await response.json();
+function renderHistorySlide() {
+    const historyContainer = document.getElementById("historyContent");
+    historyContainer.innerHTML = ''; // Clear container
 
-        // Flatten the timeline events from all decades into a single array
-        let timelineItems = [];
-        Object.entries(timelineData).forEach(([decade, events]) => {
-            events.forEach(event => {
-                timelineItems.push({ decade, ...event });
-            });
-        });
+    // Create a single element for the sliding event.
+    const slideEl = document.createElement('div');
+    slideEl.classList.add("history-event");
+    historyContainer.appendChild(slideEl);
 
-        // Optionally sort events by year (assuming numeric year)
-        timelineItems.sort((a, b) => a.year - b.year);
+    // Get a subset (e.g., five most recent events)
+    const recentEvents = ugandaFootballHistory.slice(-5);
+    let index = 0;
 
-        // Get the timeline element and create a container for the slideshow
-        const timelineEl = document.getElementById('timeline');
-        timelineEl.innerHTML = ''; // Clear any existing content
-        const slideContainer = document.createElement('div');
-        slideContainer.id = 'timeline-slide-container';
-        timelineEl.appendChild(slideContainer);
+    // Function to update the slide
+    function showNextEvent() {
+        // First, remove the "show" class to trigger fade-out/slide-out
+        slideEl.classList.remove('show');
 
-        let currentIndex = 0;
-        function displaySlide(index) {
-            const event = timelineItems[index];
-            slideContainer.innerHTML = `
-                <div class="slide">
-                    <time datetime="${event.year}">${event.year}</time>: 
-                    <strong>${event.title}</strong> — ${event.description} 
-                    <em>(${event.reference})</em>
-                    ${ event.teamLogo ? `<img src="${event.teamLogo}" alt="${event.title} logo" style="max-width:50px;vertical-align:middle;">` : '' }
-                </div>
-            `;
-        }
-
-        // Display the first slide
-        displaySlide(currentIndex);
-
-        // Change slide every 6 seconds
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % timelineItems.length;
-            displaySlide(currentIndex);
-        }, 6000);
-
-    } catch (error) {
-        console.error("Failed to load timeline data:", error);
+        // After transition duration (500ms), update the content and slide back in
+        setTimeout(() => {
+            const event = recentEvents[index];
+            slideEl.innerHTML = `<p><strong>${new Date(event.date).toLocaleDateString()}</strong> (${event.place}): ${event.description}</p>`;
+            slideEl.classList.add('show');
+            index = (index + 1) % recentEvents.length;
+        }, 500);
     }
 
-    // Additional functionalities (historic updates, article generation, etc.) can be included here...
-    
-    // Event listener for return modal (for "View More" button)
-    document.addEventListener('click', event => {
-        if (event.target.matches('.view-more')) {
-            const fullText = JSON.parse(event.target.getAttribute('data-fulltext'));
-            const modal = document.getElementById('modal');
-            const modalMessage = document.getElementById('modal-message');
-            modalMessage.textContent = fullText;
-            modal.style.display = 'block';
-        }
-    });
+    // Immediately show the first event, then change every 10 seconds
+    showNextEvent();
+    setInterval(showNextEvent, 10000);
+}
 
-    // Modal close functionality
-    document.getElementById('modal-close').addEventListener('click', () => {
-        document.getElementById('modal').style.display = 'none';
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    // --- Visit Counter ---
+    let visits = localStorage.getItem("visitCount") ? Number(localStorage.getItem("visitCount")) : 0;
+    visits++;
+    localStorage.setItem("visitCount", visits);
+    document.getElementById("visitCount").textContent = visits;
 
-    // Sample Transfer Data (with "image" property added)
-    const transferData = [
-      {
-        "player": "Cesar Manzoki",
-        "fromClub": "Free Agent",
-        "toClub": "Vipers SC",
-        "transferType": "Permanent",
-        "fee": "Undisclosed",
-        "date": "2025-06-10",
-        "image": "images/cesar.jpg"
-      },
-      {
-        "player": "Brian Nsereko",
-        "fromClub": "SC Villa",
-        "toClub": "Express FC",
-        "transferType": "Loan",
-        "fee": "$10,000",
-        "date": "2025-06-12",
-        "image": "images/brian.jpg"
-      },
-      {
-        "player": "George Aladi",
-        "fromClub": "KCCA FC",
-        "toClub": "Bright Stars FC",
-        "transferType": "Permanent",
-        "fee": "$25,000",
-        "date": "2025-06-08",
-        "image": "images/george.jpg"
-      },
-      {
-        "player": "Michael Sserumaga",
-        "fromClub": "Bright Stars FC",
-        "toClub": "KCCA FC",
-        "transferType": "Permanent",
-        "fee": "$15,000",
-        "date": "2025-06-11",
-        "image": "images/michael.jpg"
-      },
-      {
-        "player": "Moses Waiswa",
-        "fromClub": "Vipers SC",
-        "toClub": "SC Villa",
-        "transferType": "Loan",
-        "fee": "$8,000",
-        "date": "2025-06-13",
-        "image": "images/moses.jpg"
-      }
-    ];
-
-    let currentTransferIndex = 0;
-
-    function showTransfer(index) {
-      const transfer = transferData[index];
-      const transferContainer = document.getElementById("transfer-list");
-      
-      // Build the HTML for the current transfer
-      transferContainer.innerHTML = `
-        <div class="transfer-slide" style="display: flex; align-items: center; padding: 10px; border: 1px solid var(--color-primary); border-radius: 5px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <img src="${transfer.image}" alt="${transfer.player}" class="transfer-img" style="max-width:80px; margin-right: 10px; border-radius: 50%;">
-          <div class="transfer-details" style="font-size: 0.95rem;">
-            <strong>${transfer.player}</strong> transferred from 
-            <em>${transfer.fromClub}</em> to 
-            <em>${transfer.toClub}</em> via 
-            <strong>${transfer.transferType}</strong> for 
-            <strong>${transfer.fee}</strong> on 
-            <time datetime="${transfer.date}">${transfer.date}</time>.
-          </div>
-        </div>
-      `;
-    }
-    
-    // Display the first transfer
-    showTransfer(currentTransferIndex);
-    
-    // Automatically change transfers every 6 seconds
-    setInterval(() => {
-      currentTransferIndex = (currentTransferIndex + 1) % transferData.length;
-      showTransfer(currentTransferIndex);
-    }, 6000);
-
-    // Dynamic Footer Info: Date, Time, and Weather
-    const footer = document.querySelector('footer');
-    if (footer) {
-        const footerInfo = document.createElement('div');
-        footerInfo.classList.add('footer-info');
-        
-        function updateFooter() {
-            const now = new Date();
-            footerInfo.innerHTML = `
-                <p>&copy; ${now.getFullYear()} Ugandan Football</p>
-                <p>Last Modified: ${document.lastModified}</p>
-                <p>Current Time: ${now.toLocaleTimeString()}</p>
-                <p>Weather: Kampala: 27°C, Partly Cloudy</p>
-            `;
-        }
-        
-        updateFooter();
-        setInterval(updateFooter, 1000);
-        footer.appendChild(footerInfo);
-    }
-
-    // Sample News Data (each with an image)
+    // --- Dynamic Latest News ---
+    // Array of news items highlighting Vipers SC's historic double and ongoing activities
     const newsData = [
-      {
-        headline: "Premier League Kicks Off",
-        detail: "The Ugandan Premier League season begins with exciting match-ups!",
-        image: "images/news1.jpg"
-      },
-      {
-        headline: "New Sponsorship Deal",
-        detail: "A major sponsor signs a multi-year deal with Vipers SC.",
-        image: "images/news2.jpg"
-      },
-      {
-        headline: "Stadium Renovation Completed",
-        detail: "The revamped SC Villa Stadium is now open and ready for matches.",
-        image: "images/news3.jpg"
-      }
+        {
+            title: "Vipers SC Complete Historic Double",
+            content: `Vipers SC had an outstanding 2024/25 season in the StarTimes Uganda Premier League, securing their seventh league title with a commanding performance.Vipers clinched the title with 68 points from 29 matches, finishing four points ahead of second-placed NEC FC.The decisive 2-0 victory over Kitara FC in Hoima, with goals from Gusto Mulongo and Yunus Sentamu, secured the championship with a match to spare.Allan Okello led the league with 19 goals, including a league-high eight penalties.In the 2024/25 Stanbic Uganda Cup, Vipers SC reached the quarterfinal stage. They progressed comfortably after a dominant 3-0 win over Blacks Power FC, where Yunus Sentamu played a key role—scoring in the first half and assisting another goal. Despite their strong showing in the earlier rounds, their cup run ended before the semifinals, falling short of replicating their league success in the knockout competition. Nonetheless, their performance reflected depth and competitiveness across all domestic fronts.
+
+
+
+
+  Vipers SC have etched their name into Ugandan football history by securing both the Uganda Premier League title and the Uganda Cup in the same season. Celebrated locally as "Salongo," the club dominated domestic competition with a potent attack and resolute defense. Fans joined in the celebrations as Vipers lifted the league trophy and then claimed the Cup in a convincing 2–0 win over KCCA FC.`,
+            image: "images/double.jpeg" // New image for the historic double
+        },
+        {
+            title: "Champions League Await: Vipers Set for Continental Challenge",
+            content: `With the domestic double in the bag, Vipers SC are now turning their focus to the CAF Champions League. The squad is in high spirits as they prepare to face Africa's elite clubs. Training sessions are intensifying, and supporters eagerly await the continental kick-off.`,
+            image: "images/champions_league.jpeg" // New image for the Champions League news
+
+        },
+        {
+            title: "Transfer Window Manzoki: Iconic Striker Returns",
+            content: `Vipers SC have been one of the busiest clubs in the current transfer window, making key signings to bolster their squad depth. The headline act is the surprising return of club legend Cesar Manzoki, whose goal-scoring prowess helped Sarongo dominate in seasons past. Fans can’t wait to see Manzoki back in the green and white stripes.`,
+            image: "images/transfer.jpeg" // New image for the transfer window news
+        }
     ];
 
-    let currentNewsIndex = 0;
+    // Function to render news items into the page
+    function renderNews(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
 
-    function showNews(index) {
-      const newsItem = newsData[index];
-      const newsContainer = document.getElementById("news-content");
-      
-      newsContainer.innerHTML = `
-        <div class="news-slide" style="display: flex; align-items: center; padding: 10px; border: 1px solid var(--color-primary); border-radius: 5px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <img src="${newsItem.image}" alt="${newsItem.headline}" class="news-img" style="max-width:80px; margin-right: 10px; border-radius: 5px;">
-          <div class="news-details">
-            <h3 style="margin: 0 0 5px;">${newsItem.headline}</h3>
-            <p style="margin: 0;">${newsItem.detail}</p>
-          </div>
-        </div>
-      `;
+        let html = '';
+        newsData.forEach(news => {
+            html += `
+      <article>
+        ${news.image ? `<img src="${news.image}" alt="${news.title}" loading="lazy">` : ''}
+        <h3>${news.title}</h3>
+        <p>${news.content}</p>
+      </article>
+    `;
+        });
+        container.innerHTML = html;
     }
 
-    // Display the first news item and then update every 6 seconds
-    showNews(currentNewsIndex);
-    setInterval(() => {
-      currentNewsIndex = (currentNewsIndex + 1) % newsData.length;
-      showNews(currentNewsIndex);
-    }, 6000);
+    // Render news items onto the page
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => renderNews('newsContent'));
+    } else {
+        renderNews('newsContent');
+    }
 
+    renderHistorySlide();
 });
 
-console.log("JS loaded!");
+// --- Dynamic Featured Players ---
+const playersData = [
+    { name: "Mutwalibu Mugolofa", position: "GoalKeeper", club: "KCCA FC", image: "images/player1.jpeg" },
+    { name: "Allan Okello", position: "Midfielder", club: "VIPERS SC", image: "images/player2.jpeg" },
+    { name: "Richard Basangwa", position: "Forward", club: "EXPRESS FC", image: "images/player5.jpeg" },
+    { name: "Anold Odongo", position: "Defender", club: "SC Villa", image: "images/player3.jpeg" },
+    { name: "Usama Kiza Arafat", position: "Forward", club: "Kampala Capital City Authority FC", image: "images/player4.jpeg" }
+];
+const playersContent = document.getElementById("playersContent");
+playersData.forEach(player => {
+    playersContent.innerHTML += `
+        <div class="player-card">
+            <img src="${player.image}" alt="${player.name}" loading="lazy">
+            <h3>${player.name}</h3>
+            <p>${player.position}</p>
+            <p>Club: ${player.club}</p>
+        </div>
+    `;
+});
 
-<section id="news">
-  <h2>Latest News</h2>
-  <div id="news-content"></div>
-</section>
+// --- Dynamic UPL Teams ---
+const uplTeams = [
+    { name: "KCCA FC", logo: "images/kcca.png" },
+    { name: "SC Villa", logo: "images/scvilla.jpeg" },
+    { name: "Express FC", logo: "images/express.jpeg" },
+    { name: "Vipers SC", logo: "images/vipers.jpeg" }
+];
+
+const teamsContent = document.getElementById("teamsContent");
+uplTeams.forEach(team => {
+    teamsContent.innerHTML += `
+        <div class="team-card">
+            <img src="${team.logo}" alt="${team.name} Logo" loading="lazy">
+            <h3>${team.name}</h3>
+        </div>
+    `;
+});
