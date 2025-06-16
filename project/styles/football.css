@@ -105,7 +105,7 @@ section h2 {
 }
 
 .image-caption img {
-    max-width: 150px;
+    max-width: 90px;
     /* adjust as needed */
     height: auto;
     border-radius: 0;
