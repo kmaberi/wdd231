@@ -72,24 +72,51 @@ section h2 {
     color: var(--color-primary);
 }
 
-/* Team Logos in History Section */
+/* Container for team logos */
 .team-logos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;  /* space between logos */
+  margin-bottom: 20px;
 }
+
+/* Style individual logo images */
 .team-logos img {
-    border: 2px solid var(--color-primary);
-    padding: 4px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    max-width: 100px;
-    transition: transform 0.3s;
+  width: 120px;             /* consistent width */
+  height: auto;
+  border: 2px solid var(--color-primary); /* use primary color for frame */
+  border-radius: 8px;       /* rounded corners for a modern look */
+  padding: 8px;
+  background-color: #fff;   /* gives contrast on varied backgrounds */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* subtle shadow to lift the image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Hover effects for interactivity */
 .team-logos img:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Transfer Styles */
+.transfer-slide {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+.transfer-img {
+    border-radius: 50%;
+    border: 2px solid var(--color-secondary);
+}
+.transfer-details {
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 /* Footer */
