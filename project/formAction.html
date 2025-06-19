@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submission Result</title>
+  <link rel="stylesheet" href="styles/formAction.css">
+</head>
+<body>
+  <header>
+    <h1>Form Submission Result</h1>
+  </header>
+  <main>
+    <div id="result">
+      <!-- Form data will be displayed here -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Kenneth Maberi</p>
+  </footer>
+  <script>
+    // Read URL parameters and display form data.
+    const params = new URLSearchParams(window.location.search);
+    const resultDiv = document.getElementById("result");
+
+    if (Array.from(params.entries()).length === 0) {
+      resultDiv.textContent = "No form data was provided.";
+    } else {
+      const ul = document.createElement("ul");
+      for (const [key, value] of params.entries()) {
+        const li = document.createElement("li");
+        li.textContent = `${key}: ${value}`;
+        ul.appendChild(li);
+      }
+      resultDiv.appendChild(ul);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Ugandan Football – featuring the latest news, player profiles, and match updates.">
+  <meta name="author" content="Kenneth Maberi">
+  <title>Ugandan Football - Home</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/football.css">
+  <link rel="stylesheet" href="styles/modal-dialog.css">
+  <script type="module" src="scripts/football.js"></script>
+  <script src="scripts/modal-dialog.js" defer></script>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+
+<body>
+  <header>
+    <img src="images/logo.png" alt="Ugandan Football Logo" class="logo">
+    <h1>Ugandan Football</h1>
+    <!-- History Sidebar with Accessible Label -->
+    <aside class="history-sidebar" aria-label="History of Ugandan Football">
+      <h2>History of Ugandan Football</h2>
+      <div id="historyContent">
+        <!-- The sliding event will be injected here -->
+      </div>
+    </aside>
+    <!-- Responsive Menu -->
+    <nav class="responsive-menu">
+      <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="menu-items">
+        <li><a href="football.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="formPage.html">Submit Form</a></li>
+        <li><a href="displayData.html">Dynamic Data</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- Latest News Section with aria-labelledby for better accessibility -->
+    <section id="news" aria-labelledby="latest-news-heading">
+      <h2 id="latest-news-heading">Latest News</h2>
+      <div id="newsContent">
+        <!-- News content will be injected here by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Featured Players Section -->
+    <section id="players" aria-labelledby="featured-players-heading">
+      <h2 id="featured-players-heading">Featured Players</h2>
+      <div id="playersContent">
+        <!-- Player cards will be injected here by JavaScript -->
+      </div>
+    </section>
+
+    <!-- UPL Teams Section -->
+    <section id="uplTeams" aria-labelledby="upl-teams-heading">
+      <h2 id="upl-teams-heading">UPL Teams</h2>
+      <div id="teamsContent">
+        <!-- UPL teams will be dynamically added here -->
+      </div>
+    </section>
+
+    <!-- Visit Counter Section -->
+    <section id="dynamicCounter" aria-labelledby="visit-counter-heading">
+      <h2 id="visit-counter-heading">Visit Counter</h2>
+      <p>You have visited this site <span id="visitCount"></span> time(s).</p>
+    </section>
+
+    <!-- Image and Caption Section -->
+    <section id="imageCaption" aria-labelledby="image-caption-heading">
+      <h2 id="image-caption-heading">Image Caption</h2>
+      <div class="image-caption">
+        <img src="images/red_cross.png" alt="Red Cross" loading="lazy" width="200">
+        <p>Red Cross</p>
+      </div>
+    </section>
+
+    <!-- Video Demonstration Section -->
+    <section id="video-demo" aria-labelledby="video-demo-heading">
+      <h2 id="video-demo-heading">Video Demonstration</h2>
+      <p>Watch the demonstration of our project below:</p>
+      <p>
+        <a href="https://www.loom.com/share/0b545bf643784208b6fda8869a3ac688?sid=0367726f-1095-40c4-9060-fe168187ae40" target="_blank" rel="noopener">
+          Watch Video on Loom
+        </a>
+      </p>
+      <!-- Iframe updated by removing obsolete attributes and adding styling -->
+      <iframe width="560" height="315" src="https://www.loom.com/embed/0b545bf643784208b6fda8869a3ac688?sid=0367726f-1095-40c4-9060-fe168187ae40" title="Video Demonstration" style="border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <!-- Modal Dialog Section -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" aria-label="Close Modal">&times;</span>
+        <h2>Modal Dialog Title</h2>
+        <p>This is a sample modal dialog. You can put your modal content here.</p>
+      </div>
+    </div>
+    <button id="openModalBtn">Open Modal Dialog</button>
+  </main>
+  <footer>
+    <p>&copy; <span id="currentYear"></span> Kenneth Maberi | WDD 131 | Brigham Young University-Idaho</p>
+    <p><a href="references.html">References</a></p>
+  </footer>
+  <script>
+    // Set current year in the footer
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
